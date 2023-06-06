@@ -35,12 +35,11 @@
             const canvas=document.getElementById("lienzo");
             const ctx=canvas.getContext("2d");
             let t=new Sapoconcho(ctx);
-            t.avanzar(100);
-            t.girar(90);
-            t.avanzar(100);
-            t.girar(135);
-            t.avanzar(141);
            
+            for(var i=0;i<5;i++){
+                t.avanzar(100);
+                t.girar(72);
+            }
            
     
 </script>
