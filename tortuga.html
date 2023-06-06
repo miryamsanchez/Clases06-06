@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="lienzo" width="500" height="500"></canvas>
+    <script>
+        function Sapoconcho(ctx){
+            this.x=ctx.canvas.width/2; //Ubicación en el centro del lienzo
+            this.y=ctx.canvas.height/2; //Ubicación en el centro del lienzo
+            this.angulo=Math.PI/2; //La orientación mira para arriba
+            this.ctx=ctx; //Variable dentro del objeto
+            this.avanzar = function(l){
+                let xn=this.x+l*Math.cos(this.angulo); // Calcular la nueva posición
+                let yn=this.y-l*Math.sin(this.angulo);
+                this.ctx.beginPath(); //Se empieza a trazar
+                this.ctx.moveTo(this.x, this.y); //Establece la posicion inicial
+                this.ctx.lineTo(xn,yn);   //Definir hasta donde llega la linea
+                this.ctx.stroke(); //Traza todas las ordenes
+                this.x=xn;  
+                this.y=yn;
+
+            }
+            this.girar = function(a){
+                this.angulo+=Math.PI*a/180;
+
+            }
+            return this;
+            }
+            const canvas=document.getElementById("lienzo");
+            const ctx=canvas.getContext("2d");
+            let t=new Sapoconcho(ctx);
+           // t.avanzar(100);
+            //t.girar(90);
+            //t.avanzar(100);
+            //t.girar(135);
+            //t.avanzar(141);
+            for(var i=0;i<5;i++){
+                t.avanzar(100);
+                t.girar(72);
+            }
+
+    
+</script>
+</body>
+</html>
